@@ -13,7 +13,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <EditText
-        android:id="@+id/url_field"
+        android:id="@+id/urlField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter the URL"
@@ -29,5 +29,13 @@
         android:layout_height="300dp"
         android:id="@+id/iv"
         android:layout_gravity="center_horizontal" />
+    <Button
+        android:id="@+id/saveImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="invisible"
+        android:onClick="saveImage"
+        android:text="Save Image"/>
 </LinearLayout>
 </RelativeLayout>
