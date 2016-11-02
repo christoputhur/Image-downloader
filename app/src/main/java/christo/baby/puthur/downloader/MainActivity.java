@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
                             iv1.setImageBitmap(bitmap);
                             saveImageButton.setVisibility(View.VISIBLE);
                             bm = bitmap;
+
                             fileName = url.substring(url.lastIndexOf('/') + 1, url.length());
+                            fileName = fileName.replaceAll("\\?.*", "");
                         }
                     }, 0, 0, null,
                     new Response.ErrorListener() {
@@ -63,12 +65,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
             queue.add(request);
-            //MySingleton.getInstance(this).addToRequestQueue(request);
+
         }
 
         public void saveImage(View view) throws FileNotFoundException {
             OutputStream outputStream = null;
+
             String storagePath = Environment.getExternalStorageDirectory().toString();
+            storagePath = storagePath + "/ImgDownloader/";
+            File dir = new File(storagePath);
+            if (!(dir.isDirectory() || dir.exists())) dir.mkdirs();
+
             File file = new File(storagePath, fileName);
             Context context = view.getContext();
             try {
